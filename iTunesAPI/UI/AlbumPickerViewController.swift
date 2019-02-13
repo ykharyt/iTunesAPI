@@ -14,23 +14,20 @@ class AlbumPickerViewController: UIViewController {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
 
-  var viewModel: AlbumPickerViewModelType?
-
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    bind(AlbumPickerViewModel())
-  }
+  var viewModel = AlbumPickerViewModel()
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    guard let viewModel = viewModel else { return }
     viewModel.startDownloading { [weak self] in
-      self?.albumPageControl.numberOfPages = viewModel.albumsCount
+      guard let count = self?.viewModel.albumsCount else { return }
+      self?.albumPageControl.numberOfPages = count
     }
   }
 
-  func bind(_ viewModel: AlbumPickerViewModelType) {
-    self.viewModel = viewModel
+  @IBAction func pageControlSelectionAction(_ sender: UIPageControl) {
+    if let album = viewModel.album(at: sender.currentPage) {
+      titleLabel.text = album.collectionName
+    }
   }
 }
 
