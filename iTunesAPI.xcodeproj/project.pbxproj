@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		A0DC16CE2214ABAF00EE777D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16CD2214ABAF00EE777D /* AppDelegate.swift */; };
-		A0DC16D02214ABAF00EE777D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16CF2214ABAF00EE777D /* ViewController.swift */; };
+		A0DC16D02214ABAF00EE777D /* AlbumPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16CF2214ABAF00EE777D /* AlbumPickerViewController.swift */; };
 		A0DC16D32214ABAF00EE777D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0DC16D12214ABAF00EE777D /* Main.storyboard */; };
 		A0DC16D52214ABB200EE777D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0DC16D42214ABB200EE777D /* Assets.xcassets */; };
 		A0DC16D82214ABB200EE777D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0DC16D62214ABB200EE777D /* LaunchScreen.storyboard */; };
 		A0DC16E32214ABB200EE777D /* iTunesAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16E22214ABB200EE777D /* iTunesAPITests.swift */; };
+		A0DC16EF2214B0D600EE777D /* iTunesAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16EE2214B0D600EE777D /* iTunesAPIRequest.swift */; };
+		A0DC16F32214B80E00EE777D /* iTunesJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16F22214B80E00EE777D /* iTunesJSONDecoder.swift */; };
+		A0DC16F52214BB6500EE777D /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16F42214BB6500EE777D /* Album.swift */; };
+		A0DC16FA2214C01F00EE777D /* iTunesAlbumLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16F92214C01F00EE777D /* iTunesAlbumLookup.swift */; };
+		A0DC16FD2214C2D200EE777D /* AlbumPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16FC2214C2D200EE777D /* AlbumPickerViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,7 +33,7 @@
 /* Begin PBXFileReference section */
 		A0DC16CA2214ABAF00EE777D /* iTunesAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DC16CD2214ABAF00EE777D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A0DC16CF2214ABAF00EE777D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A0DC16CF2214ABAF00EE777D /* AlbumPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPickerViewController.swift; sourceTree = "<group>"; };
 		A0DC16D22214ABAF00EE777D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0DC16D42214ABB200EE777D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0DC16D72214ABB200EE777D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +41,11 @@
 		A0DC16DE2214ABB200EE777D /* iTunesAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTunesAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DC16E22214ABB200EE777D /* iTunesAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPITests.swift; sourceTree = "<group>"; };
 		A0DC16E42214ABB200EE777D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0DC16EE2214B0D600EE777D /* iTunesAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPIRequest.swift; sourceTree = "<group>"; };
+		A0DC16F22214B80E00EE777D /* iTunesJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesJSONDecoder.swift; sourceTree = "<group>"; };
+		A0DC16F42214BB6500EE777D /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		A0DC16F92214C01F00EE777D /* iTunesAlbumLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAlbumLookup.swift; sourceTree = "<group>"; };
+		A0DC16FC2214C2D200EE777D /* AlbumPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPickerViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +87,12 @@
 		A0DC16CC2214ABAF00EE777D /* iTunesAPI */ = {
 			isa = PBXGroup;
 			children = (
+				A0DC16F72214BD5F00EE777D /* UI */,
+				A0DC16FB2214C2AA00EE777D /* View models */,
+				A0DC16F62214BC6400EE777D /* Data models */,
+				A0DC16ED2214B05200EE777D /* Networking */,
 				A0DC16CD2214ABAF00EE777D /* AppDelegate.swift */,
-				A0DC16CF2214ABAF00EE777D /* ViewController.swift */,
-				A0DC16D12214ABAF00EE777D /* Main.storyboard */,
 				A0DC16D42214ABB200EE777D /* Assets.xcassets */,
-				A0DC16D62214ABB200EE777D /* LaunchScreen.storyboard */,
 				A0DC16D92214ABB200EE777D /* Info.plist */,
 			);
 			path = iTunesAPI;
@@ -94,6 +105,50 @@
 				A0DC16E42214ABB200EE777D /* Info.plist */,
 			);
 			path = iTunesAPITests;
+			sourceTree = "<group>";
+		};
+		A0DC16ED2214B05200EE777D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A0DC16EE2214B0D600EE777D /* iTunesAPIRequest.swift */,
+				A0DC16F22214B80E00EE777D /* iTunesJSONDecoder.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A0DC16F62214BC6400EE777D /* Data models */ = {
+			isa = PBXGroup;
+			children = (
+				A0DC16F42214BB6500EE777D /* Album.swift */,
+				A0DC16F92214C01F00EE777D /* iTunesAlbumLookup.swift */,
+			);
+			path = "Data models";
+			sourceTree = "<group>";
+		};
+		A0DC16F72214BD5F00EE777D /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A0DC16F82214BE1700EE777D /* Storyboards */,
+				A0DC16CF2214ABAF00EE777D /* AlbumPickerViewController.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A0DC16F82214BE1700EE777D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				A0DC16D62214ABB200EE777D /* LaunchScreen.storyboard */,
+				A0DC16D12214ABAF00EE777D /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		A0DC16FB2214C2AA00EE777D /* View models */ = {
+			isa = PBXGroup;
+			children = (
+				A0DC16FC2214C2D200EE777D /* AlbumPickerViewModel.swift */,
+			);
+			path = "View models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +252,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A0DC16D02214ABAF00EE777D /* ViewController.swift in Sources */,
+				A0DC16D02214ABAF00EE777D /* AlbumPickerViewController.swift in Sources */,
+				A0DC16EF2214B0D600EE777D /* iTunesAPIRequest.swift in Sources */,
+				A0DC16F52214BB6500EE777D /* Album.swift in Sources */,
+				A0DC16FA2214C01F00EE777D /* iTunesAlbumLookup.swift in Sources */,
+				A0DC16F32214B80E00EE777D /* iTunesJSONDecoder.swift in Sources */,
 				A0DC16CE2214ABAF00EE777D /* AppDelegate.swift in Sources */,
+				A0DC16FD2214C2D200EE777D /* AlbumPickerViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
