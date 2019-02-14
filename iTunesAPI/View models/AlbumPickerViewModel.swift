@@ -9,25 +9,27 @@
 import UIKit
 
 public protocol AlbumPickerViewModelType {
-  var albumsCount: Int { get }
-
-  func album(at index: Int) -> Album?
-  func startDownloading(completion: @escaping () -> ())
+  var albums: [Album] { get }
+  func getAlbums(completion: @escaping () -> ())
 }
 
 class AlbumPickerViewModel: AlbumPickerViewModelType {
 
-  private var albums: [Album] = []
+  var albums: [Album] = []
 
-  var albumsCount: Int { return albums.count }
-
-  func album(at index: Int) -> Album? {
-    return albums[index]
+  private struct Constants {
+    static let artistId = 1210395053
   }
 
-  func startDownloading(completion: @escaping () -> ()) {
+  func getAlbums(completion: @escaping () -> ()) {
     downloadAlbums { [weak self] albums in
-      self?.albums = albums
+      var builder = [Album]()
+      builder.append(contentsOf: albums)
+      // I. First album is always empty so we can remove it
+      builder.removeFirst()
+      // II. Sort alphabetically
+      builder.sort(by: { $0.collectionName ?? "" < $1.collectionName ?? "" })
+      self?.albums = builder
       DispatchQueue.main.async() {
         completion()
       }
@@ -36,7 +38,7 @@ class AlbumPickerViewModel: AlbumPickerViewModelType {
 
   private func downloadAlbums( completion: @escaping ([Album]) -> ()) {
     iTunesAPIRequest
-      .lookupAlbum(artistId: 909253)
+      .lookupAlbum(artistId: Constants.artistId)
       .perform { (result: iTunesAPIRequestResult<iTunesAlbumLookup>) in
         switch result {
         case .value(let lookup):
