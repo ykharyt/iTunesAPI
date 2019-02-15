@@ -27,12 +27,30 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUG-33-iHe">
-                                        <rect key="frame" x="8" y="37" width="359" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUG-33-iHe">
+                                        <rect key="frame" x="8" y="37" width="359" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bUZ-mf-hBQ">
+                                        <rect key="frame" x="8" y="207" width="359" height="44"/>
+                                        <color key="backgroundColor" red="0.25230699779999999" green="0.52259027960000004" blue="0.58391278980000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="uIl-DJ-38A"/>
+                                        </constraints>
+                                        <state key="normal" title="NEXT">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="nextButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="biW-WY-rvU"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -40,7 +58,10 @@
                                     <constraint firstAttribute="trailing" secondItem="JUG-33-iHe" secondAttribute="trailing" constant="8" id="QYA-8x-kRs"/>
                                     <constraint firstItem="JUG-33-iHe" firstAttribute="top" secondItem="V1u-Aj-pPx" secondAttribute="bottom" constant="8" id="TNf-r0-drA"/>
                                     <constraint firstItem="V1u-Aj-pPx" firstAttribute="top" secondItem="9G0-8L-Aix" secondAttribute="top" constant="8" id="cPI-Tg-KKS"/>
+                                    <constraint firstItem="bUZ-mf-hBQ" firstAttribute="leading" secondItem="9G0-8L-Aix" secondAttribute="leading" constant="8" id="caD-af-Vgr"/>
                                     <constraint firstItem="V1u-Aj-pPx" firstAttribute="leading" secondItem="9G0-8L-Aix" secondAttribute="leading" constant="8" id="dLK-9q-oVL"/>
+                                    <constraint firstAttribute="trailing" secondItem="bUZ-mf-hBQ" secondAttribute="trailing" constant="8" id="l36-dy-7N4"/>
+                                    <constraint firstAttribute="bottom" secondItem="bUZ-mf-hBQ" secondAttribute="bottom" constant="16" id="r8c-ej-w9a"/>
                                     <constraint firstAttribute="trailing" secondItem="V1u-Aj-pPx" secondAttribute="trailing" constant="8" id="zIG-Lc-Q8s"/>
                                 </constraints>
                             </view>
@@ -100,23 +121,57 @@
                         <outlet property="albumScrollView" destination="qwE-5v-76w" id="6V5-NV-Dst"/>
                         <outlet property="descriptionLabel" destination="JUG-33-iHe" id="gXN-q2-E80"/>
                         <outlet property="titleLabel" destination="V1u-Aj-pPx" id="2zu-AE-8Hr"/>
-                        <segue destination="kaU-mf-zzb" kind="show" identifier="toAlbumDetails" id="QG5-3H-uZ2"/>
+                        <segue destination="kaU-mf-zzb" kind="show" identifier="toAlbumDetails" id="FJn-9P-MVA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1161" y="131"/>
+            <point key="canvasLocation" x="1160.8" y="130.88455772113943"/>
         </scene>
-        <!--View Controller-->
+        <!--Album Details View Controller-->
         <scene sceneID="ab3-Tc-FEh">
             <objects>
-                <viewController id="kaU-mf-zzb" sceneMemberID="viewController">
+                <viewController id="kaU-mf-zzb" customClass="AlbumDetailsViewController" customModule="iTunesAPI" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C9y-1h-4iv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="album_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gvV-AL-9dd">
+                                <rect key="frame" x="0.0" y="102" width="375" height="300"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UvX-ar-9GF">
+                                <rect key="frame" x="8" y="72" width="359" height="22"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4K3-Nf-lR9">
+                                <rect key="frame" x="16" y="410" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gvV-AL-9dd" firstAttribute="top" secondItem="UvX-ar-9GF" secondAttribute="bottom" constant="8" id="6Vu-fd-kiN"/>
+                            <constraint firstItem="aIy-Hy-Z7z" firstAttribute="trailing" secondItem="UvX-ar-9GF" secondAttribute="trailing" constant="8" id="8Bc-MU-JDL"/>
+                            <constraint firstItem="gvV-AL-9dd" firstAttribute="centerX" secondItem="aIy-Hy-Z7z" secondAttribute="centerX" id="A6c-hA-7k6"/>
+                            <constraint firstItem="aIy-Hy-Z7z" firstAttribute="trailing" secondItem="4K3-Nf-lR9" secondAttribute="trailing" constant="16" id="FjF-lS-wdN"/>
+                            <constraint firstItem="gvV-AL-9dd" firstAttribute="leading" secondItem="aIy-Hy-Z7z" secondAttribute="leading" id="IWo-27-aEB"/>
+                            <constraint firstItem="4K3-Nf-lR9" firstAttribute="top" secondItem="gvV-AL-9dd" secondAttribute="bottom" constant="8" id="gok-oe-IZl"/>
+                            <constraint firstItem="UvX-ar-9GF" firstAttribute="leading" secondItem="aIy-Hy-Z7z" secondAttribute="leading" constant="8" id="jJi-tw-YJk"/>
+                            <constraint firstItem="aIy-Hy-Z7z" firstAttribute="trailing" secondItem="gvV-AL-9dd" secondAttribute="trailing" id="kPh-g3-ag5"/>
+                            <constraint firstItem="UvX-ar-9GF" firstAttribute="top" secondItem="aIy-Hy-Z7z" secondAttribute="top" constant="8" id="rgv-LP-Amj"/>
+                            <constraint firstItem="4K3-Nf-lR9" firstAttribute="leading" secondItem="aIy-Hy-Z7z" secondAttribute="leading" constant="16" id="rpt-76-VtQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="aIy-Hy-Z7z"/>
                     </view>
+                    <connections>
+                        <outlet property="cover" destination="gvV-AL-9dd" id="VTk-Ws-qWB"/>
+                        <outlet property="descriptionLabel" destination="4K3-Nf-lR9" id="Qc6-Wr-cq6"/>
+                        <outlet property="titleLabel" destination="UvX-ar-9GF" id="8GL-LA-AMp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uug-mD-wSO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,4 +196,7 @@
             <point key="canvasLocation" x="132" y="130.88455772113943"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="album_placeholder" width="300" height="300"/>
+    </resources>
 </document>

@@ -10,25 +10,55 @@ import UIKit
 
 public protocol AlbumPickerViewModelType {
   var albums: [Album] { get }
-  func getAlbums(completion: @escaping () -> ())
+  var albumCoverViews: [AlbumCoverView] { get }
+  var selectedAlbumIndex: Int { get set }
+  var albumDetailViewModel: AlbumDetailViewModelType { get }
+
+  func downloadAlbums(completion: @escaping () -> ())
 }
 
 class AlbumPickerViewModel: AlbumPickerViewModelType {
 
-  var albums: [Album] = []
-
   private struct Constants {
-    static let artistId = 1210395053
+    static let artistId = 358714030 // "Imagine Dragons"
+    static let albumPlaceholderImageName = "album_placeholder"
   }
 
-  func getAlbums(completion: @escaping () -> ()) {
-    downloadAlbums { [weak self] albums in
+  var albums: [Album] = []
+
+  var albumCoverViews: [AlbumCoverView] {
+    var builder = [AlbumCoverView]()
+    for album in albums {
+      guard let coverView = Bundle.main.loadNibNamed(
+        String(describing: AlbumCoverView.self),
+        owner: nil
+        )?.first as? AlbumCoverView,
+        let link = album.artworkURLWithHigherResulution() else { continue }
+      coverView.albumImage.setImageDownloaded(link)
+      builder.append(coverView)
+    }
+    return builder
+  }
+
+  var selectedAlbumIndex: Int = -1
+
+  var albumDetailViewModel: AlbumDetailViewModelType {
+    return AlbumDetailViewModel(
+      album: albums[selectedAlbumIndex],
+      downloadedImage: albumCoverViews[selectedAlbumIndex].albumImage.image
+        ?? UIImage(named: Constants.albumPlaceholderImageName)
+        ?? UIImage()
+    )
+  }
+
+  func downloadAlbums(completion: @escaping () -> ()) {
+    getAlbumsUsingITunesAPI { [weak self] albums in
       var builder = [Album]()
       builder.append(contentsOf: albums)
       // I. First album is always empty so we can remove it
       builder.removeFirst()
       // II. Sort alphabetically
-      builder.sort(by: { $0.collectionName ?? "" < $1.collectionName ?? "" })
+      builder.sort { $0.collectionName ?? "" < $1.collectionName ?? "" }
       self?.albums = builder
       DispatchQueue.main.async() {
         completion()
@@ -36,7 +66,7 @@ class AlbumPickerViewModel: AlbumPickerViewModelType {
     }
   }
 
-  private func downloadAlbums( completion: @escaping ([Album]) -> ()) {
+  private func getAlbumsUsingITunesAPI( completion: @escaping ([Album]) -> ()) {
     iTunesAPIRequest
       .lookupAlbum(artistId: Constants.artistId)
       .perform { (result: iTunesAPIRequestResult<iTunesAlbumLookup>) in

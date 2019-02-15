@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AlbumCoverView: UIView {
+public class AlbumCoverView: UIView {
 
   @IBOutlet weak var albumImage: WebImageView!
 

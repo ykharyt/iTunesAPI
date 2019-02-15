@@ -15,15 +15,23 @@ class AlbumPickerViewController: UIViewController, UIScrollViewDelegate {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
 
-  var viewModel = AlbumPickerViewModel()
+  var viewModel: AlbumPickerViewModelType?
+
+  private struct Constants {
+    static let toDetailsSegueIdentifier = "toAlbumDetails"
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    viewModel.getAlbums { [weak self] in
-      guard let albums = self?.viewModel.albums,
-        let albumCovers = self?.albumCoverViewsFrom(albums) else { return }
-      self?.albumPageControl.numberOfPages = albums.count
+
+    viewModel = AlbumPickerViewModel()
+
+    viewModel?.downloadAlbums { [weak self] in
+      guard let viewModel = self?.viewModel else { return }
+      let albumCovers = viewModel.albumCoverViews
+      self?.albumPageControl.numberOfPages = albumCovers.count
       self?.setupSlideScrollView(coverViews: albumCovers)
+      self?.selectAlbum(0)
     }
   }
 
@@ -31,6 +39,10 @@ class AlbumPickerViewController: UIViewController, UIScrollViewDelegate {
 
   @IBAction func pageControlSelectionAction(_ sender: UIPageControl) {
     scrollToAlbum(sender.currentPage)
+  }
+
+  @IBAction func nextButtonAction(_ sender: UIButton) {
+    self.performSegue(withIdentifier: Constants.toDetailsSegueIdentifier, sender: self)
   }
 
   // MARK: - UIScrollViewDelegate
@@ -42,29 +54,20 @@ class AlbumPickerViewController: UIViewController, UIScrollViewDelegate {
   // MARK: - Helpers
 
   func scrollToAlbum(_ index: Int) {
-    albumScrollView.setContentOffset(CGPoint(x: view.frame.width * CGFloat(index), y: 0), animated: true)
+    let point = CGPoint(x: view.frame.width * CGFloat(index), y: 0)
+    albumScrollView.setContentOffset(point, animated: true)
   }
 
   func selectAlbum(_ index: Int) {
-    guard index < viewModel.albums.count else { return }
+    guard var viewModel = viewModel,
+      index < viewModel.albums.count,
+      index != viewModel.selectedAlbumIndex else { return }
     albumPageControl.currentPage = index
+
     let album = viewModel.albums[index]
     titleLabel.text = album.collectionName
-  }
-
-  func albumCoverViewsFrom(_ albums: [Album]) -> [AlbumCoverView] {
-    var builder = [AlbumCoverView]()
-    for album in albums {
-      let coverView = Bundle.main.loadNibNamed(
-        "AlbumCoverView",
-        owner: self,
-        options: nil)?.first as! AlbumCoverView
-      if let link = album.artworkUrl100 {
-        coverView.albumImage.setImageDownloaded(link)
-      }
-      builder.append(coverView)
-    }
-    return builder
+    descriptionLabel.text = album.formattedShortDescription()
+    viewModel.selectedAlbumIndex = index
   }
 
   func setupSlideScrollView(coverViews: [AlbumCoverView]) {

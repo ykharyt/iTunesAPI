@@ -25,7 +25,8 @@ enum iTunesAPIRequest {
     case .lookupAlbum(let artistId):
       let parameters = [
         "id": String(artistId),
-        "entity": "album"
+        "entity": "album",
+        "limit": "10"
       ]
       let combinderParameters = parameters.compactMap { "\($0.key)=\($0.value)" }.joined(separator: "&")
       return URL(string: "lookup?" + combinderParameters, relativeTo: Constants.baseURL)

@@ -10,7 +10,7 @@ import UIKit
 
 class WebImageView: UIImageView {
 
-  func setImageDownloaded(_ url: URL, contentMode mode: UIView.ContentMode = .scaleToFill) {
+  func setImageDownloaded(_ url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
     contentMode = mode
     URLSession.shared.dataTask(with: url) { data, response, error in
       guard
@@ -23,7 +23,7 @@ class WebImageView: UIImageView {
       }.resume()
   }
 
-  func setImageDownloaded(_ link: String, contentMode mode: UIView.ContentMode = .scaleToFill) {
+  func setImageDownloaded(_ link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
     guard let url = URL(string: link) else { return }
     setImageDownloaded(url, contentMode: mode)
   }
