@@ -17,10 +17,6 @@ class AlbumPickerViewController: UIViewController, UIScrollViewDelegate {
 
   var viewModel: AlbumPickerViewModelType?
 
-  private struct Constants {
-    static let toDetailsSegueIdentifier = "toAlbumDetails"
-  }
-
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -35,14 +31,15 @@ class AlbumPickerViewController: UIViewController, UIScrollViewDelegate {
     }
   }
 
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let destinationViewController = segue.destination as? AlbumDetailsViewController else { return }
+    destinationViewController.viewModel = viewModel?.albumDetailViewModel
+  }
+
   // MARK: - Actions
 
   @IBAction func pageControlSelectionAction(_ sender: UIPageControl) {
     scrollToAlbum(sender.currentPage)
-  }
-
-  @IBAction func nextButtonAction(_ sender: UIButton) {
-    self.performSegue(withIdentifier: Constants.toDetailsSegueIdentifier, sender: self)
   }
 
   // MARK: - UIScrollViewDelegate

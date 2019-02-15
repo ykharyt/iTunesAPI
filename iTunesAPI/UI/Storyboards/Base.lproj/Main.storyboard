@@ -48,7 +48,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="nextButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="biW-WY-rvU"/>
+                                            <segue destination="kaU-mf-zzb" kind="show" id="fmK-ld-BXy"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -121,7 +121,6 @@
                         <outlet property="albumScrollView" destination="qwE-5v-76w" id="6V5-NV-Dst"/>
                         <outlet property="descriptionLabel" destination="JUG-33-iHe" id="gXN-q2-E80"/>
                         <outlet property="titleLabel" destination="V1u-Aj-pPx" id="2zu-AE-8Hr"/>
-                        <segue destination="kaU-mf-zzb" kind="show" identifier="toAlbumDetails" id="FJn-9P-MVA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -136,8 +135,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="album_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gvV-AL-9dd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="album_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="gvV-AL-9dd">
                                 <rect key="frame" x="0.0" y="102" width="375" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="3Gk-Qk-u0V"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UvX-ar-9GF">
                                 <rect key="frame" x="8" y="72" width="359" height="22"/>
@@ -156,7 +158,6 @@
                         <constraints>
                             <constraint firstItem="gvV-AL-9dd" firstAttribute="top" secondItem="UvX-ar-9GF" secondAttribute="bottom" constant="8" id="6Vu-fd-kiN"/>
                             <constraint firstItem="aIy-Hy-Z7z" firstAttribute="trailing" secondItem="UvX-ar-9GF" secondAttribute="trailing" constant="8" id="8Bc-MU-JDL"/>
-                            <constraint firstItem="gvV-AL-9dd" firstAttribute="centerX" secondItem="aIy-Hy-Z7z" secondAttribute="centerX" id="A6c-hA-7k6"/>
                             <constraint firstItem="aIy-Hy-Z7z" firstAttribute="trailing" secondItem="4K3-Nf-lR9" secondAttribute="trailing" constant="16" id="FjF-lS-wdN"/>
                             <constraint firstItem="gvV-AL-9dd" firstAttribute="leading" secondItem="aIy-Hy-Z7z" secondAttribute="leading" id="IWo-27-aEB"/>
                             <constraint firstItem="4K3-Nf-lR9" firstAttribute="top" secondItem="gvV-AL-9dd" secondAttribute="bottom" constant="8" id="gok-oe-IZl"/>

@@ -24,22 +24,8 @@ class AlbumPickerViewModel: AlbumPickerViewModelType {
     static let albumPlaceholderImageName = "album_placeholder"
   }
 
-  var albums: [Album] = []
-
-  var albumCoverViews: [AlbumCoverView] {
-    var builder = [AlbumCoverView]()
-    for album in albums {
-      guard let coverView = Bundle.main.loadNibNamed(
-        String(describing: AlbumCoverView.self),
-        owner: nil
-        )?.first as? AlbumCoverView,
-        let link = album.artworkURLWithHigherResulution() else { continue }
-      coverView.albumImage.setImageDownloaded(link)
-      builder.append(coverView)
-    }
-    return builder
-  }
-
+  var albums = [Album]()
+  var albumCoverViews = [AlbumCoverView]()
   var selectedAlbumIndex: Int = -1
 
   var albumDetailViewModel: AlbumDetailViewModelType {
@@ -61,9 +47,24 @@ class AlbumPickerViewModel: AlbumPickerViewModelType {
       builder.sort { $0.collectionName ?? "" < $1.collectionName ?? "" }
       self?.albums = builder
       DispatchQueue.main.async() {
+        self?.buildAlbumCovers()
         completion()
       }
     }
+  }
+
+  private func buildAlbumCovers() {
+    var builder = [AlbumCoverView]()
+    for album in albums {
+      guard let coverView = Bundle.main.loadNibNamed(
+        String(describing: AlbumCoverView.self),
+        owner: nil
+        )?.first as? AlbumCoverView,
+        let link = album.artworkURLWithHigherResulution() else { continue }
+      coverView.albumImage.setImageDownloaded(link)
+      builder.append(coverView)
+    }
+    albumCoverViews = builder
   }
 
   private func getAlbumsUsingITunesAPI( completion: @escaping ([Album]) -> ()) {

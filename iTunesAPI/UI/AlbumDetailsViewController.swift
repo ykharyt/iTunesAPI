@@ -18,14 +18,9 @@ class AlbumDetailsViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-  }
 
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    guard let destinationViewController = segue.destination as? AlbumPickerViewController,
-    let viewModel = destinationViewController.viewModel?.albumDetailViewModel else { return }
-
-    titleLabel.text = viewModel.albumTitle
-    descriptionLabel.text = viewModel.albumDescription
-    cover.image = viewModel.albumCoverImage
+    titleLabel.text = viewModel?.albumTitle
+    descriptionLabel.text = viewModel?.albumDescription
+    cover.image = viewModel?.albumCoverImage
   }
 }
