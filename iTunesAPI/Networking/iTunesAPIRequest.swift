@@ -46,7 +46,7 @@ enum iTunesAPIRequest {
         }
         if httpResponse.statusCode == 200 {
           if let data = data,
-            let response = try? iTunesJSONDecoder().decode(T.self, from: data) {
+            let response = try? iso8601JSONDecoder().decode(T.self, from: data) {
             completion(.value(response))
           } else {
             completion(.error(description: "Can't decode the response"))

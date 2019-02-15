@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A0C8B83A2216E4C200F03208 /* AlbumPickerViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C8B8392216E4C200F03208 /* AlbumPickerViewModelTests.swift */; };
+		A0C8B83C2216F36800F03208 /* TestAlbum.json in Resources */ = {isa = PBXBuildFile; fileRef = A0C8B83B2216F36800F03208 /* TestAlbum.json */; };
 		A0DC16CE2214ABAF00EE777D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16CD2214ABAF00EE777D /* AppDelegate.swift */; };
 		A0DC16D02214ABAF00EE777D /* AlbumPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16CF2214ABAF00EE777D /* AlbumPickerViewController.swift */; };
 		A0DC16D32214ABAF00EE777D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0DC16D12214ABAF00EE777D /* Main.storyboard */; };
@@ -14,7 +16,7 @@
 		A0DC16D82214ABB200EE777D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0DC16D62214ABB200EE777D /* LaunchScreen.storyboard */; };
 		A0DC16E32214ABB200EE777D /* iTunesAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16E22214ABB200EE777D /* iTunesAPITests.swift */; };
 		A0DC16EF2214B0D600EE777D /* iTunesAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16EE2214B0D600EE777D /* iTunesAPIRequest.swift */; };
-		A0DC16F32214B80E00EE777D /* iTunesJSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16F22214B80E00EE777D /* iTunesJSONDecoder.swift */; };
+		A0DC16F32214B80E00EE777D /* iso8601JSONDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16F22214B80E00EE777D /* iso8601JSONDecoder.swift */; };
 		A0DC16F52214BB6500EE777D /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16F42214BB6500EE777D /* Album.swift */; };
 		A0DC16FA2214C01F00EE777D /* iTunesAlbumLookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16F92214C01F00EE777D /* iTunesAlbumLookup.swift */; };
 		A0DC16FD2214C2D200EE777D /* AlbumPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DC16FC2214C2D200EE777D /* AlbumPickerViewModel.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A0C8B8392216E4C200F03208 /* AlbumPickerViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPickerViewModelTests.swift; sourceTree = "<group>"; };
+		A0C8B83B2216F36800F03208 /* TestAlbum.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestAlbum.json; sourceTree = "<group>"; };
 		A0DC16CA2214ABAF00EE777D /* iTunesAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0DC16CD2214ABAF00EE777D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0DC16CF2214ABAF00EE777D /* AlbumPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPickerViewController.swift; sourceTree = "<group>"; };
@@ -48,7 +52,7 @@
 		A0DC16E22214ABB200EE777D /* iTunesAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPITests.swift; sourceTree = "<group>"; };
 		A0DC16E42214ABB200EE777D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0DC16EE2214B0D600EE777D /* iTunesAPIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAPIRequest.swift; sourceTree = "<group>"; };
-		A0DC16F22214B80E00EE777D /* iTunesJSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesJSONDecoder.swift; sourceTree = "<group>"; };
+		A0DC16F22214B80E00EE777D /* iso8601JSONDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iso8601JSONDecoder.swift; sourceTree = "<group>"; };
 		A0DC16F42214BB6500EE777D /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		A0DC16F92214C01F00EE777D /* iTunesAlbumLookup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAlbumLookup.swift; sourceTree = "<group>"; };
 		A0DC16FC2214C2D200EE777D /* AlbumPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumPickerViewModel.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				A0DC16E22214ABB200EE777D /* iTunesAPITests.swift */,
+				A0C8B83B2216F36800F03208 /* TestAlbum.json */,
+				A0C8B8392216E4C200F03208 /* AlbumPickerViewModelTests.swift */,
 				A0DC16E42214ABB200EE777D /* Info.plist */,
 			);
 			path = iTunesAPITests;
@@ -123,7 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				A0DC16EE2214B0D600EE777D /* iTunesAPIRequest.swift */,
-				A0DC16F22214B80E00EE777D /* iTunesJSONDecoder.swift */,
+				A0DC16F22214B80E00EE777D /* iso8601JSONDecoder.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -277,6 +283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0C8B83C2216F36800F03208 /* TestAlbum.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +301,7 @@
 				A0DC16F52214BB6500EE777D /* Album.swift in Sources */,
 				A0DC170D2216351B00EE777D /* AlbumDetailViewModel.swift in Sources */,
 				A0DC16FA2214C01F00EE777D /* iTunesAlbumLookup.swift in Sources */,
-				A0DC16F32214B80E00EE777D /* iTunesJSONDecoder.swift in Sources */,
+				A0DC16F32214B80E00EE777D /* iso8601JSONDecoder.swift in Sources */,
 				A0DC16CE2214ABAF00EE777D /* AppDelegate.swift in Sources */,
 				A0DC1706221600B200EE777D /* WebImageView.swift in Sources */,
 				A0DC16FD2214C2D200EE777D /* AlbumPickerViewModel.swift in Sources */,
@@ -306,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0C8B83A2216E4C200F03208 /* AlbumPickerViewModelTests.swift in Sources */,
 				A0DC16E32214ABB200EE777D /* iTunesAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,7 +12,7 @@ public protocol AlbumPickerViewModelType {
   var albums: [Album] { get }
   var albumCoverViews: [AlbumCoverView] { get }
   var selectedAlbumIndex: Int { get set }
-  var albumDetailViewModel: AlbumDetailViewModelType { get }
+  var albumDetailViewModel: AlbumDetailViewModelType? { get }
 
   func downloadAlbums(completion: @escaping () -> ())
 }
@@ -28,7 +28,8 @@ class AlbumPickerViewModel: AlbumPickerViewModelType {
   var albumCoverViews = [AlbumCoverView]()
   var selectedAlbumIndex: Int = -1
 
-  var albumDetailViewModel: AlbumDetailViewModelType {
+  var albumDetailViewModel: AlbumDetailViewModelType? {
+    guard !albums.isEmpty, !albumCoverViews.isEmpty else { return nil }
     return AlbumDetailViewModel(
       album: albums[selectedAlbumIndex],
       downloadedImage: albumCoverViews[selectedAlbumIndex].albumImage.image
